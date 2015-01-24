@@ -123,6 +123,8 @@ video {
     width: 100%;
     min-height: 100%;
     padding-top: 16px;
+    background-image: url(bar.jpg);
+    background-size: auto 100%;
 }
 #search md-paper {
 	margin: 32px 16px 32px 16px;
@@ -173,6 +175,9 @@ video {
     }
 }
 @media only screen and (min-width: 768px) {
+  #search md-paper {    
+    margin-top: 25%;
+  }
 	#cerve-info img {
 		float: left;
 	}
