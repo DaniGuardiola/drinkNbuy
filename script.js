@@ -25,11 +25,20 @@ function searchBeer(el){
 }
 
 function showBeer(el){
+	var beer = 1;
+	if (el.hasAttribute('data-beer')) {
+		beer = el.getAttribute('data-beer');
+	};
 	paperkit.fab.hide();
-	var page = 'cerve1.html';
+	var page = 'cerbe'+beer+'.html';
 	transition.morph(el,false,function(beer){
 		paperkit.ajaxInsert(page,beer,function(response,parent){
 			paperkit.initElement(parent);
+			var cerve = document.getElementById('transition-cerve');
+			cerve.style.opacity = 0;
+			setTimeout(function(){
+				cerve.style.display = 'none';
+			},500)
 		});
 	});
 }
