@@ -26,6 +26,22 @@ md-sidemenu {
 
 #home {
 	min-height: 100%;
+	background: red;
+    overflow: hidden;
+    position: relative;
+}
+#home > div{
+    position: absolute;
+    color: white;
+    left: 50%;
+    top: 25%;
+    transform: translate(-50%);
+}
+#home > md-button{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    top: 50%;
 }
 
 #offers {
@@ -55,6 +71,10 @@ md-sidemenu {
 	height: 100%;
 	display: none;
 }
+video {
+    width: auto    !important;
+    height: 100%   !important;
+}
 
 @media only screen and (min-width: 768px) {
 	#lateral {
@@ -70,6 +90,13 @@ md-sidemenu {
 	#main-toolbar {
 		display: none;
 	}
+    #home > div{
+        font-size: 112px;
+        font-weight: 300;
+        white-space: nowrap;
+        line-height: 120px;
+        letter-spacing: -.044em;
+    }
 }
 
 @media only screen and (max-width: 500px) {
