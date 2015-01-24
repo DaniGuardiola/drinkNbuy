@@ -122,9 +122,12 @@ video {
 #search {
     width: 100%;
     min-height: 100%;
+    padding-top: 16px;
 }
 #search md-paper {
-	margin: 32px 16px;
+	margin: 32px 16px 32px 16px;
+	margin-top: 50%;
+	transform: translate(0,-50%);
 }
 #search  md-input{
     display: inline-block;
@@ -138,6 +141,9 @@ video {
 }
 
 @media only screen and (max-width: 768px) {
+	#search md-input {
+		width: 65% !important;
+	}
 	#cerve-info img {		
 		height: 209px;
 		margin-left: auto;

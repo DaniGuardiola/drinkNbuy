@@ -31,6 +31,7 @@ function showBeer(el){
 	};
 	paperkit.fab.hide();
 	var page = 'cerve'+beer+'.html';
+	console.log(page);
 	transition.morph(el,false,function(beer){
 		paperkit.ajaxInsert(page,beer,function(response,parent){
 			paperkit.initElement(parent);
@@ -49,7 +50,7 @@ function hideBeer(){
 	transition.morphBack();
 }
 
-function sendOrder(amount, beer){
+function sendOrder(amount, beer, callback){
 
     num_beers = amount;
     beer_price = beer;
@@ -61,10 +62,20 @@ function sendOrder(amount, beer){
 
     $.post("/pagar",{suggest:orderJson},function(result){
         alert(result.status);
+        callback();
     });
 }
 
 function payBeer(){
 	var q = document.getElementById('quantity').value;
-	sendOrder(q, 2);
+	sendOrder(q, 2, function(){
+		paperkit.fab.querySelector('md-icon').setAttribute('md-image','icon:done');		
+		paperkit.fab.setAttribute('md-color','green');
+		paperkit.fab.show();
+		setTimeout(function(){
+			paperkit.fab.querySelector('md-icon').setAttribute('md-image','icon:search');		
+			paperkit.fab.setAttribute('md-color','brown');
+			hideBeer();			
+		},1000);
+	});
 }
