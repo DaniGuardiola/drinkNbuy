@@ -76,16 +76,18 @@ md-sidemenu {
 	flex-shrink: 0;
 }
 
+#md-morph md-tile {
+	width: auto;
+}
+
 #cerve-info {
 	flex-grow: 1;
 	overflow: auto;
 }
 
 #pay-box {
-	flex-grow: 0;
+	flex-shrink: 0;
 	width: 100%;
-	position: absolute;
-	bottom: 0;
 }
 
 #search > div{
