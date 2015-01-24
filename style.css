@@ -36,6 +36,11 @@ md-sidemenu {
     left: 50%;
     top: 25%;
     transform: translate(-50%);
+    z-index: 1;
+}
+#home > .sub{
+    top: 35%;
+    font-size: 32px;
 }
 #home > md-button{
     position: absolute;
@@ -46,6 +51,7 @@ md-sidemenu {
 
 #offers {
 	padding-top: 16px;
+    background-color: #E2AF2B;
 }
 
 #offers-wrapper {
@@ -61,7 +67,9 @@ md-sidemenu {
 	cursor: pointer;
 }
 
-#search {
+#search > div{
+    display: flex;
+    flex-wrap: wrap;
 }
 
 #lateral {
@@ -74,8 +82,43 @@ md-sidemenu {
 video {
     width: auto    !important;
     height: 100%   !important;
+    position: absolute;
+    right: 0px;
 }
-
+#search{
+    width: 100%;
+    padding: 10px;
+}
+#search  md-input{
+    display: inline-block;
+    width: 85%;
+}
+#search  md-button{
+    display: inline-block;
+    width: 14%;
+    top: 30px;
+    background-color: #E2AF2B;
+}
+@media only screen and (min-width: 1080px) {
+    #home > div {
+        font-size: 100px;
+    }
+    #home > .sub{
+        font-size: 40px;
+    }
+}
+@media only screen and (min-width: 1068px) {
+    #home > div {
+        font-size: 80px;
+        font-weight: 300;
+        white-space: nowrap;
+        line-height: 120px;
+        letter-spacing: -.044em;
+    }
+    #home > .sub{
+        font-size: 35px;
+    }
+}
 @media only screen and (min-width: 768px) {
 	#lateral {
 		display: block;
@@ -90,15 +133,15 @@ video {
 	#main-toolbar {
 		display: none;
 	}
-    #home > div{
-        font-size: 112px;
-        font-weight: 300;
-        white-space: nowrap;
-        line-height: 120px;
-        letter-spacing: -.044em;
-    }
+
 }
 
+
+@media only screen and (min-width: 768px) {
+    #home > .sub{
+        font-size: 25px;
+    }
+}
 @media only screen and (max-width: 500px) {
 	.offer {
 		width: 100%;
@@ -109,6 +152,8 @@ video {
 		margin: 8px auto;
 		height: 160px;
 	}
+
+
 }
 
 @media only screen and (min-width: 500px) {
@@ -132,8 +177,25 @@ video {
 		margin: 8px auto;
 		height: 160px;
 	}
-}
 
+}
+@media only screen and (min-width: 500px) and (max-width: 500px) {
+    #home > div {
+        font-size: 60px;
+    }
+
+    #home > .sub {
+        font-size: 25px;
+    }
+}
+@media only screen and (min-width: 200px) and (max-width: 500px) {
+    #home > div {
+        font-size: 30px;
+    }
+    #home > .sub{
+        font-size: 15px;
+    }
+}
 
 
 /* ====== media ====== */

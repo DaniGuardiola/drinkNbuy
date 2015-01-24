@@ -57,6 +57,7 @@
 			<!-- HOME -->
 			<div md-height="x10" class="page" id="home">
                 <div md-position="text-center-x" md-typo="display-3">Noch ein bier, bitte</div>
+                <div md-position="text-center-x" class="sub" md-typo="display-2">Another beer please</div>
                 <md-button md-typo="button" md-action="custom: goTo" data-page="search" md-color="white" md-shadow="shadow-1">Search your beer</md-button>
                 <video width="320" height="240" autoplay loop>
                     <source src="videos/videoplayback.mp4" type="video/mp4">
@@ -65,7 +66,7 @@
             </div>
 
 			<!-- OFFERS -->
-			<div class="page" id="offers" md-color="grey">
+			<div class="page" id="offers" >
 				<span class="title" md-typo="display-3" md-font-color="white">Offers</span>
 				<div id="offers-wrapper">
 					<md-paper md-shadow="shadow-1" md-color="white" class="offer" md-padding>
@@ -85,8 +86,11 @@
 
 
 			<!-- SEARCH -->
-			<div md-height="x15" class="page" id="search">
-				
+			<div md-height="x3" class="page" id="search">
+                <md-paper md-padding md-shadow="shadow-1">
+                    <md-input type="text" md-error placeholder="Beer id..."></md-input>
+                    <md-button md-typo="button"  data-page="search" md-color="grey">Search</md-button>
+                </md-paper>
 			</div>
 		</div>
 	</div>
