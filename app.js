@@ -31,7 +31,7 @@ app.get('/node', function(req,res){
 });
 app.post('/pagar',function(req,res){
     autenticationRequest();
-    paymentTransactionRequest(req);
+    paymentTransactionRequest(req.body.suggest);
     res.json({'status': 'El pago se ha realizado correctamente'})
 });
 
@@ -44,13 +44,13 @@ server.listen(8089);
 
 
 var printTruncated = function(longText) {
-    
+
     var delta = 40;
     return longText.substring(0, delta)+"..."+longText.substring(longText.length-delta, longText.length);
 }
 
 var base64encoded = function(asciiText) {
-    
+
     var buffer = new Buffer(asciiText);
     var base64encodedData = buffer.toString('base64');
 
@@ -64,70 +64,63 @@ var paymentTransactionRequest = function(req) {
     console.log("---------- INIT PAYMENT TRANSACTION REQUEST ----------");
     console.log("------------------------------------------------------");
     console.log("");
-    
 
 
 
 
-var paymentTransactionData = {
-    "$type": "AuthorizeAndCaptureTransaction,http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest",
-    "Transaction": {
-        "$type": "BankcardTransactionPro,http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard/Pro",
-        "TenderData": {
-            "CardData": {
-                "CardType": "MasterCard",
-                "CardholderName": "John Doe",
-                "PAN": "5454545454545454",
-                "Expire": "1215"
+
+    var paymentTransactionData = {
+        "$type": "AuthorizeAndCaptureTransaction,http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest",
+        "Transaction": {
+            "$type": "BankcardTransactionPro,http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard/Pro",
+            "TenderData": {
+                "CardData": {
+                    "CardType": "MasterCard",
+                    "CardholderName": "John Doe",
+                    "PAN": "5454545454545454",
+                    "Expire": "1215"
+                },
+                "CardSecurityData": {
+                    "InternationalAVSData": {
+                        "HouseNumber": "123",
+                        "Street": "Fake St",
+                        "City": "Denver",
+                        "StateProvince": "CO",
+                        "PostalCode": "80202",
+                        "Country": "USA"
+                    },
+                    "InternationalAVSOverride": {
+                        "SkipAVS": true
+                    },
+                    "CVDataProvided": "Provided",
+                    "CVData": "111"
+                }
             },
-            "CardSecurityData": {
-                "InternationalAVSData": {
-                    "HouseNumber": "123",
-                    "Street": "Fake St",
-                    "City": "Denver",
-                    "StateProvince": "CO",
-                    "PostalCode": "80202",
-                    "Country": "USA"
-                },
-                "InternationalAVSOverride": {
-                    "SkipAVS": true
-                },
-                "CVDataProvided": "Provided",
-                "CVData": "111"
+            "TransactionData": {
+                "$type": "BankcardTransactionDataPro,http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard/Pro",
+                "CustomerPresent": "Ecommerce",
+                "EntryMode": "Keyed",
+                "GoodsType": req.goods,
+                "OrderNumber": "1234",
+                "SignatureCaptured": false,
+                "Amount": req.total_amount,
+                "CurrencyCode": "EUR",
+                "TransactionDateTime": "2015-01-15T22:41:11.478-07:00",
+                "PartialApprovalCapable": "NotSet",
+                "TransactionCode": "NotSet",
+                "Is3DSecure": false,
+                "CardholderAuthenticationEntity": "NotSet",
+                "CardPresence": false
             }
         },
-        "TransactionData": {
-            "$type": "BankcardTransactionDataPro,http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard/Pro",
-            "CustomerPresent": "Ecommerce",
-            "EntryMode": "Keyed",
-            "GoodsType": req.goods,
-            "OrderNumber": "1234",
-            "SignatureCaptured": false,
-            "Amount": req.total_amount,
-            "CurrencyCode": "EUR",
-            "TransactionDateTime": "2015-01-15T22:41:11.478-07:00",
-            "PartialApprovalCapable": "NotSet",
-            "TransactionCode": "NotSet",
-            "Is3DSecure": false,
-            "CardholderAuthenticationEntity": "NotSet",
-            "CardPresence": false
-        }
-    },
-    "ApplicationProfileId": "72446",
-    "MerchantProfileId": "SNAP_00003"
-};
-
-
-
-
-
-
-
+        "ApplicationProfileId": "72446",
+        "MerchantProfileId": "SNAP_00003"
+    };
 
 
     var url = baseUrl + "/Txn/DF83D00001";
     var sessionToken64encoded = base64encoded(sessionToken+":");
-    
+
     var options = {
         method: "POST",
         url: url,
@@ -138,22 +131,22 @@ var paymentTransactionData = {
         },
         json: paymentTransactionData
     };
-    
+
     console.log("sessionToken64encoded  -> "+printTruncated(sessionToken64encoded));
-    
+
     console.log("");
     console.log("payment transaction data");
     console.log("------------------------");
     console.log(paymentTransactionData);
-    
+
     console.log("");
     console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     console.log("POST                   -> "+url)
     console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     console.log("");
-    
+
     request(options, function(error, response, body) {
-        
+
         console.log("result of payment transaction request");
         console.log("-------------------------------------");
         console.log(body);
@@ -167,10 +160,10 @@ var autenticationRequest = function() {
     console.log("------------- INIT AUTENTICATION REQUEST -------------");
     console.log("------------------------------------------------------");
     console.log("");
-    
+
     var url = baseUrl + "/SvcInfo/token";
     var identityToken64encoded = base64encoded(identityToken+":");
-    
+
     var options = {
         method: "GET",
         url: url,
@@ -180,24 +173,23 @@ var autenticationRequest = function() {
             "Authorization": "Basic "+identityToken64encoded
         }
     };
-    
+
     console.log("identityToken          -> "+printTruncated(identityToken));
     console.log("identityToken64encoded -> "+printTruncated(identityToken64encoded));
-    
+
     console.log("");
     console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     console.log("GET                    -> "+url)
     console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     console.log("");
-    
+
     request(options, function(error, response, body) {
-        
+
         sessionToken = body.substring(1, body.length-1);
-        
+
         console.log("body                   -> "+printTruncated(body));
         console.log("sessionToken           -> "+printTruncated(sessionToken));
-        
+
 
     });
 }
-
