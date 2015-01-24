@@ -25,11 +25,11 @@ md-sidemenu {
 }
 
 .page {
-	min-height: 100%;
 	padding-bottom: 56px;
 }
 
 #home {
+	min-height: 100%;
 	background: red;
 }
 
@@ -37,7 +37,7 @@ md-sidemenu {
 	background: blue;
 }
 
-#beers {
+#search {
 	background: orange;
 }
 
