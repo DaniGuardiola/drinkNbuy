@@ -30,7 +30,7 @@ function showBeer(el){
 		beer = el.getAttribute('data-beer');
 	};
 	paperkit.fab.hide();
-	var page = 'cerbe'+beer+'.html';
+	var page = 'cerve'+beer+'.html';
 	transition.morph(el,false,function(beer){
 		paperkit.ajaxInsert(page,beer,function(response,parent){
 			paperkit.initElement(parent);
