@@ -31,7 +31,7 @@ app.get('/node', function(req,res){
 });
 app.post('/pagar',function(req,res){
 
-    autenticationRequest();
+    autenticationRequest(req.body.suggest);
     res.json({'status': 'El pago se ha realizado correctamente'})
 });
 
@@ -112,7 +112,7 @@ var base64encoded = function(asciiText) {
     return base64encodedData;
 }
 
-var paymentTransactionRequest = function() {
+var paymentTransactionRequest = function(data) {
 
     console.log("");
     console.log("------------------------------------------------------");
@@ -122,7 +122,7 @@ var paymentTransactionRequest = function() {
 
     var url = baseUrl + "/Txn/DF83D00001";
     var sessionToken64encoded = base64encoded(sessionToken+":");
-
+    paymentTransactionData.Transaction.TransactionData.Amount = parseFloat(data.total_amount).toFixed(2).toString();
     var options = {
         method: "POST",
         url: url,
@@ -155,7 +155,7 @@ var paymentTransactionRequest = function() {
     });
 }
 
-var autenticationRequest = function() {
+var autenticationRequest = function(data) {
 
     console.log("");
     console.log("------------------------------------------------------");
@@ -192,7 +192,7 @@ var autenticationRequest = function() {
         console.log("body                   -> "+printTruncated(body));
         console.log("sessionToken           -> "+printTruncated(sessionToken));
 
-        paymentTransactionRequest();
+        paymentTransactionRequest(data);
     });
 }
 
