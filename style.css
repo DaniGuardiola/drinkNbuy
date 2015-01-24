@@ -24,10 +24,6 @@ md-sidemenu {
 	overflow: auto;
 }
 
-.page {
-	padding-bottom: 56px;
-}
-
 #home {
 	min-height: 100%;
 	background: red;
@@ -49,11 +45,23 @@ md-sidemenu {
 }
 
 #offers {
-	background: blue;
+	padding-top: 16px;
+}
+
+#offers-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+#offers .title {
+	margin-left: 16px;
+}
+
+.offer {
+	cursor: pointer;
 }
 
 #search {
-	background: orange;
 }
 
 #lateral {
@@ -72,9 +80,6 @@ video {
 	#lateral {
 		display: block;
 	}
-	.page {
-		padding-bottom: 0;
-	}
 	#main {
 		margin-left: 256px;
 		padding-right: 256px;
@@ -92,5 +97,39 @@ video {
         line-height: 120px;
         letter-spacing: -.044em;
     }
+}
 
+@media only screen and (max-width: 500px) {
+	.offer {
+		width: 100%;
+		margin: 16px;
+	}
+	.offer img {
+		display: block;
+		margin: 8px auto;
+		height: 160px;
+	}
+}
+
+@media only screen and (min-width: 500px) {
+	.offer {
+		flex-grow: 1;
+		border-radius: 2px;
+		margin: 32px 8px;
+		transition: box-shadow 0.25s;
+	}
+	.offer:first-child {
+		margin-left: 16px;
+	}
+	.offer:last-child {
+		margin-right: 16px;
+	}
+	.offer:hover {
+		box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+	}
+	.offer img {
+		display: block;
+		margin: 8px auto;
+		height: 160px;
+	}
 }
