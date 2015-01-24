@@ -25,7 +25,8 @@ function searchBeer(el){
 }
 
 function showBeer(el){
-	var page = 'cerve.html';
+	paperkit.fab.hide();
+	var page = 'cerve1.html';
 	transition.morph(el,false,function(beer){
 		paperkit.ajaxInsert(page,beer,function(response,parent){
 			paperkit.initElement(parent);
@@ -33,8 +34,25 @@ function showBeer(el){
 	});
 }
 
+
 function hideBeer(){
+	paperkit.fab.show();
 	transition.morphBack();
+}
+
+function sendOrder(amount, beer){
+
+    num_beers = amount;
+    beer_price = beer;
+    total_amount = num_beers * beer_price;
+    orderJson = {
+        'total_amount' : total_amount,
+        'goods' : 'beer'
+    }
+
+    $.post("/pagar",{suggest:orderJson},function(result){
+        alert(result.status);
+    });
 }
 
 function payBeer(){

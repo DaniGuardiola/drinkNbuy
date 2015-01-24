@@ -7,8 +7,10 @@
 	<link rel="stylesheet" href="materializer/materializer.css">
 	<link rel="stylesheet" href="style.css">
 	<script src="materializer/materializer.js"></script>
+
 </head>
 <body>
+	<md-fab md-color="brown" md-image="icon:search" md-fill="white" md-action="custom: goTo" data-page="search"></md-fab>
 	<md-sidemenu md-shadow="shadow-1" md-color="brown">
 		<a><img id="logo" src="logo.png"></a>
 		<md-list md-font-color="white" md-fill="white" md-action="custom: goTo">
@@ -85,14 +87,15 @@
 
 			<!-- SEARCH -->
 			<div md-height="x3" class="page" id="search">
-                <md-paper md-padding md-shadow="shadow-1">
+                <md-paper md-padding md-shadow="shadow-1" id="search-paper">
                     <md-input type="text" md-error placeholder="Beer id..."></md-input>
-                    <md-button md-typo="button"  data-page="search" md-color="grey">Search</md-button>
+                    <md-button md-typo="button" md-action="custom: showBeer" data-page="search" md-color="grey">Search</md-button>
                 </md-paper>
 			</div>
 		</div>
 	</div>
-	
-	<script src="script.js"></script>
+
+    <script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
