@@ -33,8 +33,24 @@ function showBeer(el){
 	});
 }
 
+
 function hideBeer(){
 	transition.morphBack();
+}
+
+function sendOrder(amount, beer){
+
+    num_beers = amount;
+    beer_price = beer;
+    total_amount = num_beers * beer_price;
+    orderJson = {
+        'total_amount' : total_amount,
+        'goods' : 'beer'
+    }
+
+    $.post("/pagar",{suggest:orderJson},function(result){
+        alert(result.status);
+    });
 }
 
 function payBeer(){
