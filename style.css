@@ -1,0 +1,69 @@
+body {
+	overflow: hidden;
+	height: 100%;
+}
+
+md-sidemenu {
+	max-width: 256px;
+}
+
+#logo {
+	display: block;
+	width: 100%;
+}
+
+#main {
+	width: 100%;
+	height: 100%;
+	flex-grow: 1;
+}
+
+#pages {
+	height: 100%;
+	width: 100%;
+	overflow: auto;
+}
+
+.page {
+	min-height: 100%;
+	padding-bottom: 56px;
+}
+
+#home {
+	background: red;
+}
+
+#offers {
+	background: blue;
+}
+
+#beers {
+	background: orange;
+}
+
+#lateral {
+	position: absolute;
+	top: 0;
+	width: 256px;
+	height: 100%;
+	display: none;
+}
+
+@media only screen and (min-width: 768px) {
+	#lateral {
+		display: block;
+	}
+	.page {
+		padding-bottom: 0;
+	}
+	#main {
+		margin-left: 256px;
+		padding-right: 256px;
+	}
+	md-sidemenu {
+		display: none;
+	}
+	#main-toolbar {
+		display: none;
+	}
+}

@@ -9,7 +9,64 @@
 	<script src="materializer/materializer.js"></script>
 </head>
 <body>
+	<md-sidemenu md-shadow="shadow-1" md-color="brown">
+		<a><img id="logo" src="logo.png"></a>
+		<md-list md-font-color="white" md-fill="white">
+			<md-tile>
+				<md-icon md-image="icon:home"></md-icon>
+				<md-text>Start</md-text>
+			</md-tile>
+			<md-tile>
+				<md-icon md-image="icon:local_offer"></md-icon>
+				<md-text>Offers</md-text>
+			</md-tile>
+			</md-tile>
+			<md-tile>
+				<md-icon md-image="icon:local_bar"></md-icon>
+				<md-text>Beers</md-text>
+		</md-list>
+	</md-sidemenu>
+	<div id="lateral" md-shadow="shadow-1" md-color="brown">
+		<a><img id="logo" src="logo.png"></a>
+		<md-list md-font-color="white" md-fill="white">
+			<md-tile>
+				<md-icon md-image="icon:home"></md-icon>
+				<md-text>Start</md-text>
+			</md-tile>
+			<md-tile>
+				<md-icon md-image="icon:local_offer"></md-icon>
+				<md-text>Offers</md-text>
+			</md-tile>
+			</md-tile>
+			<md-tile>
+				<md-icon md-image="icon:local_bar"></md-icon>
+				<md-text>Beers</md-text>
+		</md-list>
+	</div>
+	<div id="main">
+		<md-toolbar id="main-toolbar" md-main md-color="cyan" md-fill="white" md-shadow="1">
+			<md-row>
+				<md-icon-button class="menu-button" id="main-toolbar" md-image="icon:menu" md-action="custom: paperkit.sidemenu.open"></md-icon-button>
+				<md-text>Drink N' Buy</md-text>
+				<md-space></md-space>
+				<md-icon-button md-image="icon:help"></md-icon-button>
+			</md-row>
+		</md-toolbar>
+
+		<div id="pages">
+			<!-- HOME -->
+			<div md-height="x10" class="page" id="home"></div>
+
+
+			<!-- OFFERS -->
+			<div md-height="x6" class="page" id="offers"></div>
+
+
+			<!-- BEERS -->
+			<div md-height="x15" class="page" id="beers"></div>
+		</div>
+	</div>
 	
-	<script src="materializer/script.js"></script>
+	<script src="script.js"></script>
 </body>
 </html>
