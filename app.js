@@ -26,12 +26,45 @@ var sessionToken = "not defined yet";
 app.get('/', function(req,res){
     res.sendfile('index.html');
 });
-app.post('/pagar',function(){
+app.get('/node', function(req,res){
+    res.sendfile('node.html');
+});
+app.post('/pagar',function(req,res){
     autenticationRequest();
+    paymentTransactionRequest(req);
+    res.json({'status': 'El pago se ha realizado correctamente'})
 });
 
 
 server.listen(8089);
+
+
+
+
+
+
+var printTruncated = function(longText) {
+    
+    var delta = 40;
+    return longText.substring(0, delta)+"..."+longText.substring(longText.length-delta, longText.length);
+}
+
+var base64encoded = function(asciiText) {
+    
+    var buffer = new Buffer(asciiText);
+    var base64encodedData = buffer.toString('base64');
+
+    return base64encodedData;
+}
+
+var paymentTransactionRequest = function(req) {
+
+    console.log("");
+    console.log("------------------------------------------------------");
+    console.log("---------- INIT PAYMENT TRANSACTION REQUEST ----------");
+    console.log("------------------------------------------------------");
+    console.log("");
+    
 
 
 
@@ -67,10 +100,10 @@ var paymentTransactionData = {
             "$type": "BankcardTransactionDataPro,http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard/Pro",
             "CustomerPresent": "Ecommerce",
             "EntryMode": "Keyed",
-            "GoodsType": "DigitalGoods",
+            "GoodsType": req.goods,
             "OrderNumber": "1234",
             "SignatureCaptured": false,
-            "Amount": "10.00",
+            "Amount": req.total_amount,
             "CurrencyCode": "EUR",
             "TransactionDateTime": "2015-01-15T22:41:11.478-07:00",
             "PartialApprovalCapable": "NotSet",
@@ -81,32 +114,17 @@ var paymentTransactionData = {
         }
     },
     "ApplicationProfileId": "72446",
-    "MerchantProfileId": "SNAP_00001"
+    "MerchantProfileId": "SNAP_00003"
 };
 
 
-var printTruncated = function(longText) {
-    
-    var delta = 40;
-    return longText.substring(0, delta)+"..."+longText.substring(longText.length-delta, longText.length);
-}
 
-var base64encoded = function(asciiText) {
-    
-    var buffer = new Buffer(asciiText);
-    var base64encodedData = buffer.toString('base64');
 
-    return base64encodedData;
-}
 
-var paymentTransactionRequest = function() {
 
-    console.log("");
-    console.log("------------------------------------------------------");
-    console.log("---------- INIT PAYMENT TRANSACTION REQUEST ----------");
-    console.log("------------------------------------------------------");
-    console.log("");
-    
+
+
+
     var url = baseUrl + "/Txn/DF83D00001";
     var sessionToken64encoded = base64encoded(sessionToken+":");
     
@@ -179,7 +197,7 @@ var autenticationRequest = function() {
         console.log("body                   -> "+printTruncated(body));
         console.log("sessionToken           -> "+printTruncated(sessionToken));
         
-        paymentTransactionRequest();
+
     });
 }
 

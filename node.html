@@ -1,17 +1,47 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <script type="text/javascript" src="jquery-2.1.1.min.js"></script>
-    <script>
-        var txt = "";
-            $.post("/pagar",{suggest:txt},function(result){
-                console.debug("pagado");
-            });
-    </script>
-</head>
-<body>
+  <head>
+      <meta charset="UTF-8">
+      <title>Document</title>
+      <script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+  </head>
+  <body>
 
-</body>
+    <form accept-charset="UTF-8" action="/projects/1/entries" class="new_entry" id="new_entry" method="post"><div style="display:none"><input name="utf8" type="hidden">
+
+      <label for="entry_hours">Hours</label>
+      <input id="entry_hours" name="entry[hours]" type="number">
+      <br>
+      <label for="num_cervezas">Minutes</label>
+      <input id="num_cervezas" name="num_cervezas" type="number">
+      <br>
+
+      <input name="commit" type="submit" class="comprar" value="Comprar">
+
+    </form>
+
+    <script>
+    
+      function sendOrder(){
+  
+        num_beers = $("num_cervezas").value;
+        beer_price = $("precio_cerveza").value;
+        total_amount = num_beers * beer_price;
+        orderJson = {
+          'total_amount' : total_amount,
+          'goods' : 'beer'
+        }
+  
+        var txt = "";
+        $.post("/pagar",{suggest:orderJson},function(result){
+            alert(result.status);
+        });
+      }
+
+
+      $(".comprar").on("click", "li", sendOrder);
+
+    </script>
+
+  </body>
 </html>
