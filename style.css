@@ -26,7 +26,6 @@ md-sidemenu {
 
 #home {
 	min-height: 100%;
-	background: red;
     overflow: hidden;
     position: relative;
 }
