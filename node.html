@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+    <script>
+        var txt = "";
+            $.post("/pagar",{suggest:txt},function(result){
+                console.debug("pagado");
+            });
+    </script>
+</head>
+<body>
+
+</body>
+</html>
