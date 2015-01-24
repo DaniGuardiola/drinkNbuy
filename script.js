@@ -18,13 +18,16 @@ function goTo(el){
 	document.body.scrollIntoView();
 	paperkit.sidemenu.close();
 }
-var beerDiv;
+
 function showBeer(el, id){
 	var page = 'cerve.html';
 	transition.morph(el,false,function(beer){
-		window.beerDiv = beer;
 		paperkit.ajaxInsert(page,beer,function(response,parent){
 			paperkit.initElement(parent);
 		});
 	});
+}
+
+function hideBeer(){
+	transition.morphBack();
 }

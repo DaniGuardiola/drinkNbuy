@@ -61,6 +61,27 @@ md-sidemenu {
 	cursor: pointer;
 }
 
+#md-morph {
+	display: flex;
+	flex-direction: column;
+}
+
+#md-morph md-toolbar {
+	flex-shrink: 0;
+}
+
+#cerve-info {
+	flex-grow: 1;
+	overflow: auto;
+}
+
+#pay-box {
+	flex-grow: 0;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+}
+
 #search {
 }
 
@@ -137,7 +158,7 @@ video {
 
 
 /* ====== media ====== */
-.media {margin:10px;}
+.media {padding:16px;}
 .media, .bd {overflow:hidden; _overflow:visible;
 zoom:1;}
 .media .img {float:left; margin-right: 10px;}
