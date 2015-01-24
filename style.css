@@ -133,3 +133,20 @@ video {
 		height: 160px;
 	}
 }
+
+
+
+/* ====== media ====== */
+.media {margin:10px;}
+.media, .bd {overflow:hidden; _overflow:visible;
+zoom:1;}
+.media .img {float:left; margin-right: 10px;}
+.media .imgExt{float:right; margin-left: 10px;}
+.media .img img,
+.media .img imgExt{display:block;}
+
+
+.img_in_beer_page {
+  width: 150px;
+  height: 150px;
+}
