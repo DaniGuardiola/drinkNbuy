@@ -21,30 +21,33 @@
 	<md-form>
 		<md-row>
 			<md-tile>
-				<span md-typo="subhead">Quiero</span>
-				<md-input type="select" value="1">
-					<option value="1">1 cerveza</option>
-					<option value="2">2 cervezas</option>
-					<option value="3">3 cervezas</option>
-					<option value="4">4 cervezas</option>
-					<option value="5">5 cervezas</option>
-					<option value="6">6 cervezas</option>
-					<option value="7">7 cervezas</option>
-					<option value="8">8 cervezas</option>
-					<option value="9">9 cervezas</option>
-					<option value="10">10 cervezas</option>
-					<option value="11">11 cervezas</option>
-					<option value="12">12 cervezas</option>
-					<option value="13">13 cervezas</option>
-					<option value="14">14 cervezas</option>
-					<option value="15">15 cervezas</option>
-					<option value="16">16 cervezas</option>
-					<option value="17">17 cervezas</option>
-					<option value="18">18 cervezas</option>
-					<option value="19">19 cervezas</option>
-					<option value="20">20 cervezas</option>
+				<span md-typo="subhead">I want</span>
+				<md-input id="quantity" type="select" value="1">
+					<option value="1">1 beer</option>
+					<option value="2">2 beers</option>
+					<option value="3">3 beers</option>
+					<option value="4">4 beers</option>
+					<option value="5">5 beers</option>
+					<option value="6">6 beers</option>
+					<option value="7">7 beers</option>
+					<option value="8">8 beers</option>
+					<option value="9">9 beers</option>
+					<option value="10">10 beers</option>
+					<option value="11">11 beers</option>
+					<option value="12">12 beers</option>
+					<option value="13">13 beers</option>
+					<option value="14">14 beers</option>
+					<option value="15">15 beers</option>
+					<option value="16">16 beers</option>
+					<option value="17">17 beers</option>
+					<option value="18">18 beers</option>
+					<option value="19">19 beers</option>
+					<option value="20">20 beers</option>
 				</md-input>
-				<span md-typo="subhead">a 2€ por unidad</span>
+				<span md-typo="subhead">2$ each</span>
+			</md-tile>
+			<md-tile>
+				<md-button md-typo="flat-light" md-action="custom: payBeer">Pay</md-button>
 			</md-tile>
 		</md-row>
 	</md-form>

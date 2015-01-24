@@ -19,7 +19,12 @@ function goTo(el){
 	paperkit.sidemenu.close();
 }
 
-function showBeer(el, id){
+function searchBeer(el){
+	var paper = document.getElementById('search-paper');
+	showBeer(paper);
+}
+
+function showBeer(el){
 	var page = 'cerve.html';
 	transition.morph(el,false,function(beer){
 		paperkit.ajaxInsert(page,beer,function(response,parent){
@@ -30,4 +35,9 @@ function showBeer(el, id){
 
 function hideBeer(){
 	transition.morphBack();
+}
+
+function payBeer(){
+	var q = document.getElementById('quantity').value;
+	sendOrder(q, 2);
 }
