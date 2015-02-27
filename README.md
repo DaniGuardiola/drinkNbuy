@@ -4,6 +4,6 @@ The Snap API is disabled to allow using the app, but the backend should work if 
 
 The app we developed is about buying beer. We like beer.
 
-Uses an early version on Paperkit Material Design Framework, made by Dani Guardiola (me). Dogfood FTW.
+Uses an early version of Paperkit Material Design Framework (under materializer/), made by Dani Guardiola (me). Dogfood FTW.
 
 Demo: coming soon
