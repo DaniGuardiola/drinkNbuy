@@ -60,10 +60,10 @@ function sendOrder(amount, beer, callback){
         'goods' : 'beer'
     }
 
-    $.post("/pagar",{suggest:orderJson},function(result){
-        alert(result.status);
+    //$.post("/pagar",{suggest:orderJson},function(result){
+    //    alert(result.status);
         callback();
-    });
+    //});
 }
 
 function payBeer(){
